@@ -4,17 +4,59 @@ import resetCounter from "./functions/resetCounter.jsx"
 
 function App() {
 
-    const [counter, setCounter] = useState(5)
+    const [toDOId , setToDOId] = useState(1)
+
+    const [toDo , setToDO] = useState([
+        {
+            id : Date.now(),
+            value : "Default Task",
+            completed : false
+        }
+    ])
+
+    function addToDO(){
+
+        const Item = {
+            id : Date.now(),
+            value : "Hello Added Task",
+            completed : false
+        }
+
+        setToDO([...toDo , Item])
+    }
 
     return (
         <div>
-            <div>Hello World</div>
-            <div>{counter}</div>
+            
+            <br></br>
+            {
+                toDo.map( (item) => {
+                    return (
+                        console.log(item),
+                        <div key={item.id} >{item.value}</div>
+                    )
+                })
+            }
 
-            <button onClick = {incrementCounter({counter , setCounter})} >Increase</button>
-            <button onClick = {resetCounter ({setCounter})} >Reset</button>
+            <br></br><br></br>
+            <button  onClick={addToDO}>Add To DO</button>
+
+
         </div>
     )
 }
 
+
+function makeValueEmpty(props){
+        return function (){
+            console.log('makeValueEmpty called')
+            props.setvalue("")
+        }
+        
+}
+
 export default App
+
+
+
+
