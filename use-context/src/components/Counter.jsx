@@ -4,6 +4,7 @@ import { ContextCounter } from "../context/Counter";
 function Couter(){
 
     const storeValues = useContext(ContextCounter);
+    console.log(storeValues)
 
     return (
         <div>

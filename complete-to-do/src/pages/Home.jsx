@@ -1,11 +1,11 @@
 import { useState } from "react";
-import ToDoAdd from "../componetns/AddToDO";
-import ShowToDo from "../componetns/ShowToDo";
+import ToDoAdd from "../components/AddToDO";
+import ShowToDo from "../components/ShowToDo";
 import Completed from "./Completed";
 
 function Home(){
 
-    const [toDO , setToDO] = useState([]);
+    const [toDO, setToDO] = useState([]);
     console.log(toDO)
 
     function addToDo(text){
@@ -22,6 +22,7 @@ function Home(){
 
     return ( 
         <div>
+            <h1>Home Page</h1>
             <ToDoAdd addToDos = {addToDo} ></ToDoAdd>
             <ShowToDo toDo = {toDO} toogle = {toogle}></ShowToDo>
         </div>

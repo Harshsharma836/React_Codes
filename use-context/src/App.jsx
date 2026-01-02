@@ -4,21 +4,16 @@ import './App.css'
 import Couter from './components/counter';
 import { useContext } from 'react';
 import { ContextCounter } from './context/Counter';
+import Message from './components/Message';
 
 function App() {
-  // const [count, setCount] = useState(0);
 
   const counterState = useContext(ContextCounter);
   console.log("counterState Values  -> " + JSON.stringify(counterState))
 
   return (
     <div>
-        {counterState.count}
-
-        <Couter></Couter>
-        <Couter></Couter>
-        <Couter></Couter>
-        <Couter></Couter>
+       <Message></Message>
         
     </div>
   )
