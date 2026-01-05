@@ -1,13 +1,16 @@
-import { useCallback, useState } from "react"
+import { useCallback, useContext, useState } from "react"
+import { ToDoContext } from "../context/ToDoContext";
 
-function ToDoAdd({addToDos}){
+function ToDoAdd(){
 
     const [text , settext] = useState("");
+
+    const store = useContext(ToDoContext);
     
     const save = useCallback( (function save(){
-        addToDos(text);
+        store.addToDo(text);
         settext("")
-    } ) , [text , addToDos])
+    } ) , [text , store.addToDo])
 
     return (
         <div>

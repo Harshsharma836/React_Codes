@@ -1,30 +1,22 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ToDoAdd from "../components/AddToDO";
 import ShowToDo from "../components/ShowToDo";
 import Completed from "./Completed";
+import { ToDoContext } from "../context/ToDoContext";
 
 function Home(){
 
-    const [toDO, setToDO] = useState([]);
-    console.log(toDO)
+    const store = useContext(ToDoContext);
 
-    function addToDo(text){
-        setToDO([ ...toDO , { id : Date.now() , text , done : false }])
-    }
+    console.log(store.toDO)
 
-    function toogle(id){
-        const updatedToDo = toDO.map((val)=>{
-            return val.id == id ? {...val, done : !val.done} : val
-        })
-
-        setToDO(updatedToDo)
-    }
-
-    return ( 
+    return (
         <div>
             <h1>Home Page</h1>
-            <ToDoAdd addToDos = {addToDo} ></ToDoAdd>
-            <ShowToDo toDo = {toDO} toogle = {toogle}></ShowToDo>
+
+        
+            <ToDoAdd ></ToDoAdd>
+            <ShowToDo></ShowToDo>
         </div>
     )
 }

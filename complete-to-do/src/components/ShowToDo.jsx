@@ -1,19 +1,27 @@
-import { useMemo } from "react"
+import { useContext, useMemo } from "react"
+import { ToDoContext } from "../context/ToDoContext"
 
-function ShowToDo({toDo , toogle}){
+function ShowToDo(){
+
+    const store = useContext(ToDoContext);
+
+    // increaseQuantity
+    // descreaseQuantity
+
     const toDos = useMemo(()=>{
-        return toDo.map((val)=>{
+        return store.toDO?.map((val)=>{
             return (
                 <li key={val.id}>
-                    <span onClick={(e) => toogle(val.id)}>
+                    <span onClick={(e) => store.toogle(val.id)}>
+                        
                         {val.text}
                         {val.done ? "  done  " : "  false  " }
-                       
                     </span>
+
                 </li>
             )
         })
-    } , [toDo , toogle])
+    } , [store.toDO , store.toogle])
 
     return (
         <ul>{toDos}</ul>
