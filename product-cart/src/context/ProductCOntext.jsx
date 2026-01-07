@@ -3,14 +3,12 @@ import { createContext, useState } from "react";
 export const ProStore = createContext(null);
 
 export function StoreProvider({ children }) {
-  const [product, setProduct] = useState(null);
+
+  const [product, setProduct] = useState(null); // It's for single product 
   const [cart, setCart] = useState({});
 
-  const productDummy = [
-    { id: 1, name: "pensil" },
-    { id: 2, name: "cup" },
-    { id: 3, name: "headphones" },
-  ];
+  console.log("Cart");
+  console.log(cart)
 
   function selectPro(product) {
     setProduct(product);
@@ -25,7 +23,7 @@ export function StoreProvider({ children }) {
 
   return (
     <ProStore.Provider
-      value={{ product, cart, selectPro, storePro, productDummy }}
+      value={{ product, cart, selectPro, storePro }}
     >
       {children}
     </ProStore.Provider>
